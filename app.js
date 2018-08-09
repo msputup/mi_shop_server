@@ -1,7 +1,7 @@
 const Koa = require('koa'),
       router = require('koa-router')(),
       bodyParser = require('koa-bodyparser')
-
+	  cors = require('koa2-cors')
 const app = new Koa();
 
 const home = require('./routes/home')
@@ -22,6 +22,7 @@ router.use('/category',category)
 router.use('/cart',cart)
 router.use('/activity',activity)
 
+app.use(cors())
 app.use(bodyParser())
 app.use(router.routes()).use(router.allowedMethods())
 
